@@ -44,6 +44,7 @@ async function getPoolData(address) {
 
   let userInfo = await stakerInstance.methods.userInfo(LPToken, address).call();
   let LptokensReceived = userInfo.amount;
+  let rewards=await stakerInstance.methods.getPendingTokens(LPToken,address).call();
 
   var token0 = await poolInstance.methods.token0().call();
   var token1 = await poolInstance.methods.token1().call();
@@ -69,8 +70,10 @@ async function getPoolData(address) {
   var token1amount =
     (LptokensReceivedtoken1 / totalSupplytoken1) * token1Reserve;
   token1amount = token1amount.toFixed(2);
-  if ((token0amount != 0, token1amount != 0))
+  if ((token0amount != 0, token1amount != 0)){
     console.log(Symbol0, "+", Symbol1, token0amount, "+", token1amount);
+    console.log('rewards:',(rewards/10**Decimal1).toFixed(2))
+  }
 }
 
 async function getINJdata(address){
@@ -111,7 +114,8 @@ async function getREVVdata(address){
 
 }
 
-let address = readline.question("enter address:");
+// let address = readline.question("enter address:");
+let address="0x6d16c0252acd30a24c2625f60635cad0ed3f713a";
 getSUPERdata(address);
 getPoolData(address);
 getINJdata(address);
