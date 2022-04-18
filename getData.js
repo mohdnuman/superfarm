@@ -4,7 +4,6 @@ const stakerAbi = require("./abi.json");
 const tokenAbi = require("./tokenAbi.json");
 const poolAbi = require("./poolAbi.json");
 
-const readline = require("readline-sync");
 
 let web3;
 
